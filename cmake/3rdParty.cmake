@@ -32,7 +32,9 @@ if(LY_3RDPARTY_PATH)
 endif()
 if(NOT EXISTS ${LY_3RDPARTY_PATH})
     file(MAKE_DIRECTORY ${LY_3RDPARTY_PATH})
-    message(FATAL_ERROR "3rdParty folder: ${LY_3RDPARTY_PATH} does not exist, call cmake defining a valid LY_3RDPARTY_PATH or use cmake-gui to configure it")
+    if(NOT EXISTS ${LY_3RDPARTY_PATH})
+        message(FATAL_ERROR "3rdParty folder: Cannot create ${LY_3RDPARTY_PATH}, call cmake defining a valid LY_3RDPARTY_PATH or use cmake-gui to configure it")   
+    endif()
 endif()
 
 #! ly_add_external_target_path: adds a path to module path so 3rdparty Find files can be added from paths different than cmake/3rdParty
