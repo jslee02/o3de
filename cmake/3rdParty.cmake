@@ -31,6 +31,7 @@ if(LY_3RDPARTY_PATH)
     file(TO_CMAKE_PATH ${LY_3RDPARTY_PATH} LY_3RDPARTY_PATH)
 endif()
 if(NOT EXISTS ${LY_3RDPARTY_PATH})
+    file(MAKE_DIRECTORY ${LY_3RDPARTY_PATH})
     message(FATAL_ERROR "3rdParty folder: ${LY_3RDPARTY_PATH} does not exist, call cmake defining a valid LY_3RDPARTY_PATH or use cmake-gui to configure it")
 endif()
 
